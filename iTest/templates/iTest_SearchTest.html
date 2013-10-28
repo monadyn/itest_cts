@@ -1,0 +1,99 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:py="http://genshi.edgewall.org/">
+  <xi:include href="layout.html" />
+  <xi:include href="macros.html" />
+
+  <head>
+    <title>$title</title>
+    
+
+  
+  </head> 
+  
+  <body>  
+ 	<!-- <h2>Search Test</h2> -->
+
+    <form class="buildsearch" id="buildsearch" method="post" action="">
+      <fieldset>
+        <legend>Please Search</legend>
+
+      <div class="buttons">
+		<label>Creator:<input type="text" size="5" name="creator" value="$creator" /></label>  
+		<label>Name:<input type="text" size="20" name="name" value="$name" /></label>
+      </div> 
+
+        <div class="buttons">
+          <input type="submit" name="TestSearchButton" value="search" />    
+        </div>
+        
+      <div class="buttons">
+        <label>ToTal Num<input type="text" size="5" name="totalnum" value="$totalnum" /></label> 
+        <label>Finish <input type="text" size="5" name="totalnum_finish" value="$totalnum_finish" /></label> 
+        <label>Stopped <input type="text" size="5" name="totalnum_stopped" value="$totalnum_stopped" /></label>   
+        <label>PassList <input type="text" size="5" name="totalnum_passlist" value="$totalnum_passlist" /></label> 
+        <label>Smoke <input type="text" size="5" name="totalnum_smoke" value="$totalnum_smoke" /></label> 
+      </div>          
+        
+      </fieldset>          
+    </form>
+
+    
+  <h1>Search Test Results</h1>
+
+    <form method="post" action="">
+
+      <table class="listing" id="test">
+        <thead>
+          <tr>  
+          <th>ID</th>
+          <th>Creator</th>
+          <th>Type</th> 
+          <th>SubType</th>  
+          <th>Started</th>
+          <th>Stopped</th>
+          <th>Duration</th>
+          <th>Status</th>  
+          <th>PassRatio</th>
+          <th>Priority</th>
+          <th>Verify</th>
+          <th>AutoDel</th>
+          <th>Version</th>       
+          </tr>          
+        </thead>
+
+        <tbody>
+        <tr py:for="test in tests">             
+          <td class="id"><code>$test.id</code></td>
+          <td class="name"><a href="$test.testhref" target="_blank">$test.name</a></td>
+          <td class="buildtype"><code>$test.buildtype</code></td>
+          <td class="subtype"><code>$test.subtype</code></td>           
+          <td class="start"><code>$test.start</code></td> 
+          <td class="end"><code>$test.end</code></td>  
+          <td class="timecost"><code>$test.timecost</code></td>
+          <td class="teststatus"><a href="$test.result_href" target="_blank">$test.status</a></td>    
+          <td class="testreport"><a href="$test.result_href" target="_blank">$test.testreport</a></td>
+
+          <td class="priority"><code>$test.priority</code></td> 
+          <td class="verify"><code>$test.verify</code></td>
+          <td class="versiondel_type"><code>$test.versiondel_type</code></td>
+          <td class="version"><code>$test.version</code></td>
+        </tr>
+        </tbody>
+      </table>
+
+
+
+ 	<!--
+         $test_table
+    -->
+    </form>
+
+
+
+    
+  </body>
+</html>

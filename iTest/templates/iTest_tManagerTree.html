@@ -1,0 +1,41 @@
+
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:py="http://genshi.edgewall.org/">
+  <xi:include href="layout.html" />
+  <xi:include href="macros.html" />
+  
+  <head>
+  <title> tManager  </title>
+
+</head>
+
+<body>
+<h2> tManager </h2> 
+
+<table width="100%" align="center"  border="0px">
+
+   <tr>
+
+      <td valign="top">
+	<p><a href="javascript: d.openAll();">open all</a> | <a href="javascript: d.closeAll();">close all</a></p>
+	<script type="text/javascript">		
+        $dtree_js		
+	</script>
+      </td>
+   
+     <td >     
+     <div id="mainframe" name="mainframe"  ></div>
+     
+     </td> 
+   </tr>   
+</table>
+
+<br /><br /><br /><br />
+
+</body>
+
+</html>

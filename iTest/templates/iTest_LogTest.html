@@ -1,0 +1,565 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:py="http://genshi.edgewall.org/">
+  <xi:include href="layout.html" />
+  <xi:include href="macros.html" />
+
+  <head>
+    <!--<meta http-equiv="refresh" content="10">-->
+    <title>$title</title>
+   <!-- <meta http-equiv="refresh" content="40"></meta>-->
+    
+
+		<script type="text/javascript">
+$(function () {
+    var chart;
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'starters_table',
+                type: 'column',
+                margin: [ 50, 50, 100, 80]
+            },
+            title: {
+                text: 'Accumulated Test Number'
+            },
+            subtitle: {
+                text: 'Total Number: $total_D'
+            },            
+            xAxis: {
+                categories: [
+                    '$N1',
+                    '$N2',
+                    '$N3',
+                    '$N4',
+                    '$N5',
+                    '$N6',
+                    '$N7',
+                    '$N8',
+                    '$N9',
+                    '$N10',
+                    '$N11',
+                    '$N12',
+                    '$N13',
+                    '$N14',
+                    '$N15',
+                    '$N16',
+                    '$N17',
+                    '$N18',
+                    '$N19',
+                    '$N20'
+                ],
+                labels: {
+                    rotation: -45,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Test Total(Number)'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                formatter: function() {
+                    return '<b>'+ this.x +'</b><br/>'+'Test Number:'+this.y;
+                }
+            },
+            series: [{
+                name: 'Accumulated Test Number',
+                data: [
+                    $D1,
+                    $D2,
+                    $D3,
+					$D4,
+                    $D5,
+                    $D6,
+                    $D7,
+                    $D8,
+                    $D9,
+                    $D10,
+                    $D11,
+                    $D12,
+                    $D13,
+                    $D14,
+                    $D15,
+					$D16,
+                    $D17,
+                    $D18,
+                    $D19,
+                    $D20
+                    ],
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            }]
+        });
+    });
+    
+});
+		</script>
+
+<script type="text/javascript">
+$(function () {
+    $(document).ready(function() {
+        Highcharts.setOptions({
+            global: {
+                useUTC: false
+            }
+        });
+
+		function requestData() {
+			$.ajax({
+			    //type: "GET",
+				url: "$inprogress_test_nums_url",
+
+                beforeSend: function(XMLHttpRequest) { /*alert('beforeSend');*/ },
+				success: function(data, textStatus) {				    
+				    
+					var series = chart.series[0];
+					
+                    //alert(data); 
+                    var x = (new Date()).getTime(), // current time
+                        //y = Math.random() * data;
+                        y = 1 * data;
+                    series.addPoint([x, y], true, true);					
+
+                    //series.addPoint(eval(data), true, true);
+                    
+					// call it again after 5 second
+					setTimeout(requestData, 5000);	//5s
+				},
+				cache: false
+			});
+		}
+    
+        var chart;
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'Inprogress_table',
+                type: 'spline',
+                marginRight: 10,
+                height: 400,
+                width: 600,
+				events: {
+					load: requestData
+				} 
+            },
+            title: {
+                text: 'Inprogress Case Number'
+            },
+            xAxis: {
+                type: 'datetime',
+                tickPixelInterval: 150
+            },
+            yAxis: {
+                title: {
+                    text: 'InProgress Number'/*'Value'*/
+                },
+                max: $y_max, 
+                min: 0,
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                formatter: function() {                        
+                        return '<b>'+ this.series.name +': </b>'+
+                        Highcharts.numberFormat(this.y, 1);
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            },
+            series: [{
+                name: 'InProgress Number',
+                data: [],
+                data: (function() {                     
+                    var data = [],
+                        time = (new Date()).getTime(),
+                        i;
+                    /*
+                    data.push({
+                            x: time + (-19 * 1000),
+                            y: $inprogresscase_length
+                       });  
+                    data.push({
+                            x: time + (-18 * 1000),
+                            y: $inprogresscase_length
+                       }); 
+                    data.push({
+                            x: time + (-17 * 1000),
+                            y: $inprogresscase_length
+                       }); 
+                    data.push({
+                            x: time + (-16 * 1000),
+                            y: $inprogresscase_length
+                       });    
+                    data.push({
+                            x: time + (-15 * 1000),
+                            y: $inprogresscase_length
+                       }); */
+                    data.push({
+                            x: time + (-14 * 1000),
+                            y: $inprogresscase_length
+                       });  
+                    data.push({
+                            x: time + (-13 * 1000),
+                            y: $inprogresscase_length
+                       }); 
+                    data.push({
+                            x: time + (-12 * 1000),
+                            y: $inprogresscase_length
+                       }); 
+                    data.push({
+                            x: time + (-11 * 1000),
+                            y: $inprogresscase_length
+                       });    
+                    data.push({
+                            x: time + (-10 * 1000),
+                            y: $inprogresscase_length
+                       });     
+                    data.push({
+                            x: time + (-9 * 1000),
+                            y: $inprogresscase_length
+                       });  
+                    data.push({
+                            x: time + (-8 * 1000),
+                            y: $inprogresscase_length
+                       }); 
+                    data.push({
+                            x: time + (-7 * 1000),
+                            y: $inprogresscase_length
+                       }); 
+                    data.push({
+                            x: time + (-6 * 1000),
+                            y: $inprogresscase_length
+                       });    
+                    data.push({
+                            x: time + (-5 * 1000),
+                            y: $inprogresscase_length
+                       }); 
+                    data.push({
+                            x: time + (-4 * 1000),
+                            y: $inprogresscase_length
+                       });  
+                    data.push({
+                            x: time + (-3 * 1000),
+                            y: $inprogresscase_length
+                       }); 
+                    data.push({
+                            x: time + (-2 * 1000),
+                            y: $inprogresscase_length
+                       }); 
+                    data.push({
+                            x: time + (-1 * 1000),
+                            y: $inprogresscase_length
+                       });    
+                    data.push({
+                            x: time + (-0 * 1000),
+                            y: $inprogresscase_length
+                       });                         
+                    return data;
+                })()
+            }]
+        });
+    });
+    
+});
+</script> 	     		    
+
+
+     
+
+<script type="text/javascript">
+$(function () {
+
+    function startRequest()
+    {
+        
+        //chart.redraw();
+			$.ajax({
+			    //type: "GET",
+				//url: "http://itest-center/iTest/build?debug_start_statics=all",
+				url: "$inprogress_test_nums_url",
+
+                beforeSend: function(XMLHttpRequest) { /*alert('beforeSend');*/ },
+				success: function(data, textStatus) {				    
+				    
+					var series = chart.series[0];
+					//alert('startRequest');
+                    //alert(data); 
+                    var x = (new Date()).getTime(), // current time
+                        y = 1 * data;   
+                        
+                    chart.redraw();
+					// call it again after 5 second
+					setTimeout(startRequest, 5000);	//5s
+				},
+				cache: false
+			});        
+    }
+    
+    var chart;    
+    $(document).ready(function () { 
+
+        //setInterval("startRequest()",1000);
+    	
+    	// Build the chart
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'ratio_pie',
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+				events: {
+					load: startRequest
+				} 
+            },            
+            
+            title: {
+                text: 'Test Case Status'
+            },
+            tooltip: {
+        	    pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+            	percentageDecimals: 1
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Browser share',
+                data: [
+                    ['Waiting',   $left_case],
+                    ['Fail',   $fail],
+                    {
+                        name: 'Success',
+                        y: $passed,
+                        sliced: true,
+                        selected: true
+                    }
+                ]
+            }]
+        });
+    });
+    
+});		
+</script> 	 
+
+
+  </head>
+  <body>
+
+
+  
+<form id="modtest" method="post" action="">
+   
+      <h1>Test($name)</h1>
+
+  
+
+<table width="1200" border="0" align="center" cellpadding="0" cellspacing="0" style="BORDER:1px #333333 solid;">
+<tr>  	
+<td>    
+    <td width="400" valign="top" align="center" style="BORDER:1px #333333 solid;">  
+	<table class="form" summary="">
+	      
+          <tr class="field">
+            <th><label for="total">Total Cases Num:</label></th>
+            <td colspan="3"><dd class="test">$total</dd></td>             
+          </tr>	
+         <tr class="field">
+            <th><label for="passed">Passed:</label></th>
+            <td colspan="3"><dd class="test">$passed</dd></td>             
+          </tr>
+          <tr class="field">
+            <th><label for="fail">Failed:</label></th>
+            <td colspan="3"><dd class="test">$fail</dd></td>  
+          </tr> 
+          <tr class="field">
+            <th><label for="TempPassRatio">Temp Pass Ratio:</label></th>
+            <td colspan="3"><dd class="test">$TempPassRatio</dd></td>  
+          </tr>           
+          <tr class="field">
+            <th><label for="version">Pass Ratio:</label></th>
+            <td colspan="3"><dd class="test">$testreport</dd></td>  
+          </tr>  
+          <tr class="field">
+            <th><label for="status">Status:</label></th>
+            <td colspan="3"><dd class="test">$status</dd></td>  
+          </tr>             
+ 
+     
+	</table>
+	</td> 
+	
+    <td width="400" valign="top" align="center" style="BORDER:1px #333333 solid;">  
+	<table class="form" summary="">
+          <tr class="field">
+            <th><label for="start">Start Time:</label></th>
+            <td colspan="3"><dd class="test">$start</dd></td>  
+          </tr>     
+          <tr class="field">
+            <th><label for="end">Finish Time:</label></th>
+            <td colspan="3"><dd class="test">$end</dd></td>  
+          </tr>           
+          <tr class="field">
+            <th><label for="timecost">Time Cost:</label></th>
+            <td colspan="3"><dd class="test">$timecost</dd></td>  
+          </tr>           
+          <tr class="field">
+            <th><label for="buildtype">Type:</label></th>
+            <td colspan="3"><dd class="test">$buildtype</dd></td>             
+          </tr>
+         <tr class="field">
+            <th><label for="subtype">SubType:</label></th>
+            <td colspan="3"><dd class="test">$subtype</dd></td>             
+          </tr>
+          <tr class="field">
+            <th><label for="testplatform">Platform:</label></th>
+            <td colspan="3"><dd class="test">$testplatform</dd></td>  
+          </tr>  
+          <tr class="field">
+            <th><label for="version">Version Num:</label></th>
+            <td colspan="3"><dd class="test">$version</dd></td>  
+          </tr> 
+	</table>         
+	</td>  
+
+    <td width="400" valign="top" align="center" style="BORDER:1px #333333 solid;">  
+	<table class="form" summary="">	
+     <div class="buttons">
+        <input type="radio" name="sel_test" value="$id" checked="1" />     
+        <input type="submit" name="starttest" value="Start" />
+        <input type="submit" name="stoptest" value="Stop" />    
+        <input type="submit" name="modifytest" value="Modify" />  
+        <input type="submit" name="resettest" value="Reset" disabled="$resettestswitch" />      
+        <input type="submit" name="testSendReport" value="SendReport2Verify" />
+        <input type="submit" name="testAddReport2Bugz" value="AddReport2BugzComment" />
+      </div>       
+	</table>         
+	</td>  	
+
+</td>
+</tr>        
+</table>	
+
+<table width="1200" border="0" align="center" cellpadding="0" cellspacing="0" style="BORDER:1px #333333 solid;">
+            <b >Result Path:</b>
+            <a href="$result_path">$result_path</a> 
+            <br />
+            
+            <b >CaseList Path:</b>
+            <a href="$caselist">$caselist</a>  
+            <br />
+            
+            <b >ARM Version Path:</b>
+            <a href="$versionpath">$versionpath</a>  
+            <br />
+            
+            <b >DSP Version Path:</b>
+            <a href="$dspversionpath">$dspversionpath</a> 
+            <br />
+</table>  
+
+
+	
+<!--<table width="750" border="0" align="center" cellpadding="0" cellspacing="0" style="BORDER:1px #333333 solid;">-->
+<table width="1200" border="0" align="center" cellpadding="0" cellspacing="0" style="BORDER:1px #333333 solid;">
+<tr> 
+    <td width="600" valign="top">  
+	<table class="form" summary="">	
+        <div id="Inprogress_table" style="height:400px; width:600px;">Inprogress_table</div>
+	</table>  
+	</td> 
+	
+    <td width="400" valign="top">  
+	<table class="form" summary="">	
+        <div id="ratio_pie" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+	</table>  
+	</td> 
+  
+ </tr>		     
+</table>
+
+
+<p><b>  InProgress &nbsp;&nbsp;(<font color='red'>$inprogresscase_length</font>)</b>
+&nbsp;&nbsp;<a href="javascript:display_hidn('InProgress');">Hide/Show</a>&nbsp;&nbsp;</p>
+
+<table  id="InProgress" name="InProgress"   width="1200" class="buglisting" style="word-wrap:break-word;word-break:break-all;display:none;"   cellspacing="0" cellpadding="0" border="1">
+<thead><tr>
+<th style='background: #f7f7f0;'>No</th>
+<th style='background: #f7f7f0;'>IP</th>
+<th style='background: #f7f7f0;'>Case</th>
+</tr>
+</thead>
+        <tr py:for="inprogresscase in inprogresscases">
+          <td class="id"><code>$inprogresscase.id</code></td>          
+          <td class="ip"><code>$inprogresscase.ip($inprogresscase.number)</code></td>
+          <td class="case"><code>$inprogresscase.case</code></td> 
+        </tr>           
+</table>
+
+<p><b>  Fail &nbsp;&nbsp;(<font color='red'>$failcase_length</font>)</b>
+&nbsp;&nbsp;<a href="javascript:display_hidn('Fail');">Hide/Show</a>&nbsp;&nbsp;</p>
+
+<table  id="Fail" name="Fail"   width="700px" class="buglisting" style="word-wrap:break-word;word-break:break-all;display:none;"   cellspacing="0" cellpadding="0" border="1">
+<thead><tr>
+<th style='background: #f7f7f0;'>No</th>
+<th style='background: #f7f7f0;'>Case</th>
+</tr>
+</thead>
+        <tr py:for="failcase in failcases">
+          <td class="id"><code>$failcase.id</code></td>
+          <td class="case"><code>$failcase.case</code></td>                   
+        </tr>
+</table>
+   
+      
+<table width="1200" border="0" align="center" cellpadding="0" cellspacing="0" style="BORDER:1px #333333 solid;">
+<tr> 
+    <td width="600" valign="top">  
+	<table class="form" summary="">	
+        <div id="starters_table" style="height:400px; width:1198px;">Accumulated Test Number</div>
+	</table>  
+	</td> 
+ </tr>		     
+</table>   
+
+</form>      
+<br /><br />
+ 
+  </body>
+</html>

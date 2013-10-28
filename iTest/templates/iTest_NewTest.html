@@ -1,0 +1,272 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+        
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:i18n="http://genshi.edgewall.org/i18n"
+      py:with="parent = attachments and attachments.parent or attachment.resource.parent">
+  <xi:include href="layout.html" />
+  <xi:include href="macros.html" />
+
+  
+  <head>iTest
+
+
+
+<script class="code" type="text/javascript"> 
+function chgmode(){
+var HSIT_tab = document.getElementById("HSIT_tab");
+var RDIT_tab = document.getElementById("RDIT_tab");
+var MSIT_tab = document.getElementById("MSIT_tab");
+var L1IT_tab = document.getElementById("L1IT_tab");
+var PLD_Monkey_tab = document.getElementById("PLD_Monkey_tab");
+var PLD_SRT_tab = document.getElementById("PLD_SRT_tab");
+var CTS_tab = document.getElementById("CTS_tab");
+
+var mode = document.getElementById("test_type_mode");
+
+HSIT_tab.style.display="none";
+RDIT_tab.style.display="none";
+MSIT_tab.style.display="none";
+L1IT_tab.style.display="none";
+PLD_Monkey_tab.style.display="none";
+PLD_SRT_tab.style.display="none";
+Debug_tab.style.display="none";
+CTS_tab.style.display="block";
+return;
+
+if(mode.value=="PLD_SRT"){
+HSIT_tab.style.display="none";
+RDIT_tab.style.display="none";
+MSIT_tab.style.display="none";
+L1IT_tab.style.display="none";
+PLD_Monkey_tab.style.display="none";
+PLD_SRT_tab.style.display="block";
+Debug_tab.style.display="none";
+}
+
+if(mode.value=="PLD_Monkey"){
+HSIT_tab.style.display="none";
+RDIT_tab.style.display="none";
+MSIT_tab.style.display="none";
+L1IT_tab.style.display="none";
+PLD_Monkey_tab.style.display="block";
+PLD_SRT_tab.style.display="none";
+Debug_tab.style.display="none";
+}
+
+if(mode.value=="L1IT"){
+HSIT_tab.style.display="none";
+RDIT_tab.style.display="none";
+MSIT_tab.style.display="none";
+L1IT_tab.style.display="block";
+PLD_Monkey_tab.style.display="none";
+PLD_SRT_tab.style.display="none";
+Debug_tab.style.display="none";
+}
+
+if(mode.value=="MSIT"){
+HSIT_tab.style.display="none";
+RDIT_tab.style.display="none";
+MSIT_tab.style.display="block";
+L1IT_tab.style.display="none";
+PLD_Monkey_tab.style.display="none";
+PLD_SRT_tab.style.display="none";
+Debug_tab.style.display="none";
+}
+
+if(mode.value=="RDIT"){
+HSIT_tab.style.display="none";
+RDIT_tab.style.display="block";
+MSIT_tab.style.display="none";
+L1IT_tab.style.display="none";
+PLD_Monkey_tab.style.display="none";
+PLD_SRT_tab.style.display="none";
+Debug_tab.style.display="none";
+}
+
+if(mode.value=="HSIT"){
+HSIT_tab.style.display="block";
+RDIT_tab.style.display="none";
+MSIT_tab.style.display="none";
+L1IT_tab.style.display="none";
+PLD_Monkey_tab.style.display="none";
+PLD_SRT_tab.style.display="none";
+Debug_tab.style.display="none";
+}
+
+}
+</script>
+  </head>
+  
+  <body>   
+    
+
+<DIV style=" width:996px;position: relative;margin-left:auto;margin-right:auto;">
+<h2>New Test</h2>
+</DIV>
+
+	
+<DIV style=" background: #ffd;border: 1px outset #996;width:996px;position: relative;margin-left:auto;margin-right:auto;">
+<br />
+    <!--<form class="mod" id="SubmitForm" method="post" action="">-->
+    <form id="attachment" method="post" enctype="multipart/form-data" action=""> 
+    <!--<div><input type="hidden" name="__FORM_TOKEN" value="fb0dfcc742d8641a0573cd45" /></div>-->
+    
+        <table cellspacing="1" width="100%" style="border:solid 0px #000000;">
+
+          <tr>
+          	<td>        
+		  	<table width="100%">		
+				<tr>
+			   	 	$table_testlist
+				</tr>  		  	
+		  	</table>
+		  	<br />
+          	</td>          
+          </tr>
+        
+          <tr>
+          <td>
+		  	<table width="100%">
+				<tr>
+			    	$table_name  
+				</tr>
+				<tr>
+			   	 	$table_versionnum 
+				</tr>				
+		  	</table>
+          </td>
+          </tr>
+             
+
+          
+          <tr>           
+          	<td>
+		  	<table width="100%"> 
+		  		<table width="91%" id="HSIT_tab" style="display:none;">  
+		  		<tr>
+		  		    $table_HSIT			
+		  		</tr>
+		  		</table>	
+		  		
+		  		<table width="22%" id="PLD_SRT_tab" style="display:none;">
+				<tr>
+			   	 	$table_PLD_SRT
+				</tr>				
+		  		</table>
+		  		<table width="52%" id="RDIT_tab" style="display:none;">  
+		  		<tr>
+		  		    $table_RDIT			
+		  		</tr>
+		  		</table>
+		  		<table width="46%" id="MSIT_tab" style="display:none;">  
+		  		<tr>
+		  		    $table_MSIT			
+		  		</tr>
+		  		</table>
+		  		<table width="100%" id="L1IT_tab" style="display:none;">  
+		  		<tr>
+		  		    $table_L1IT			
+		  		</tr>
+		  		</table>		  		
+
+
+	<table width="22%" id="CTS_tab" style="display:block;">
+		<tr class="field">
+		<th><label for="CTStype">Sub TestType:</label></th>
+		<td>
+		  <select id="CTStype" name="CTStype">
+		    <option py:for="CTStype in CTStypes">$CTStype</option>
+		  </select>
+		</td>
+		</tr> 			
+	</table>
+		  		
+   
+	    <table id="PLD_Monkey_tab" style="display:none;">           
+			<tr class="field">
+			<th><label for="PLD_Monkeytype">Sub TestType:</label></th>
+			<td>
+			  <select id="PLD_Monkeytype" name="PLD_Monkeytype">
+			    <option py:for="PLD_Monkeytype in PLD_Monkeytypes">$PLD_Monkeytype</option>
+			  </select>
+			</td>
+			</tr>           
+ 
+          <tr class="field">
+            <th><label for="rerun_times">Rerun Times:</label></th>
+            <td colspan="3"><input id="rerun_times" type="text" name="rerun_times" size="10" value="1" /></td>             
+          </tr>  
+        
+          <tr class="field">
+            <th><label for="PldCustomPlatform">Custom Platform:</label></th>
+            <td colspan="3"><input id="PldCustomPlatform" type="text" name="PldCustomPlatform" size="10" value="0" /></td>  
+          </tr>          
+          
+          <tr class="field">
+            <th><label for="ProductID">Product ID:</label></th>
+            <td>
+              <select id="ProductID" name="ProductID">
+                <option py:for="ProductID in ProductIDs">$ProductID</option>
+              </select>
+            </td>
+          </tr> 
+
+          <tr class="field">
+            <th><label for="ProductPattern">Product Pattern:</label></th>
+            <td>
+              <select id="ProductPattern" name="ProductPattern">
+                <option py:for="ProductPattern in ProductPatterns">$ProductPattern</option>
+              </select>
+            </td>
+          </tr> 
+
+          <tr class="field">
+            <th><label for="MemoryWidth">Memory Width:</label></th>
+            <td>
+              <select id="MemoryWidth" name="MemoryWidth">
+                <option py:for="MemoryWidth in MemoryWidths">$MemoryWidth</option>
+              </select>
+            </td>
+          </tr> 
+
+          <tr class="field">
+            <th><label for="ScreenSize">Screen Size:</label></th>
+            <td>
+              <select id="ScreenSize" name="ScreenSize">
+                <option py:for="ScreenSize in ScreenSizes">$ScreenSize</option>
+              </select>
+            </td>
+          </tr>            
+	    </table>
+   
+		  </table> 
+		  <br />
+          </td>          	
+          </tr>
+          
+          <br />           
+	         <table width="100%">   
+                 <tr>
+                    $table_testversion 
+                 </tr>	  	    
+	         </table>  
+          <br /> 
+        
+	</table>
+        <br />
+        <input type="submit" name="canceltest" value="Cancel" />
+        <!--<input type="submit" name="submittest" value="Save" />  -->   
+        <input type="submit" name="saveandstarttest" value="Save and Start" /> 
+        <!--<input type="submit" name="DEBUG" value="DEBUG" /> -->
+    </form>
+</DIV>
+<br /><br />
+ 
+<br /><br />
+   </body>
+</html>

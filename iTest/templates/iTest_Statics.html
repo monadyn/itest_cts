@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude">
+  <xi:include href="layout.html" />
+  <head>
+    <title>iTask</title>
+  </head>
+
+  <body>
+    <br /><br /><br /><br />
+    TBD!
+<!--    
+    <div  style="width:80%;margin-left:auto;margin-right:auto;background: #ddd;" >
+      <h1>工时统计系统简介</h1>
+      <hr style="border:1px dashed;height:1px;margin:0;color:#000000"/>
+      iData 是 iManage 管理平台的一个组件，目前实现了工时统计的功能。<br />
+      <b>发起任务</b>：每个月FIN/HR 发起一个新的填写任务。<br />
+      <b>填写对象</b>：通过任务发起人设置的代理人列表，代理人的代理人等递推出所有相关的人员<br />
+    </div>
+
+    <br /><br />
+    <div  style="width:80%;margin-left:auto;margin-right:auto;background: #eee;" >
+     <h1>术语说明 </h1>
+     Agent：发起新任务人员必须配置，内容为需要填写工时统计的二级部门经理，或二级部门助理。如果是部门助理，则助理还需要进一步设置Agent为各子部门经理。<br />
+     <br />
+    </div >
+     <br /><br />
+
+     <div  style="width:80%;margin-left:auto;margin-right:auto;background: #eee;" >
+      <h1>菜单介绍</h1>
+      <image src="/chrome/hw/images/iData_MENU.bmp" /><br />
+      <LI>Login  : 使用域账号登陆系统，用户名为小写，名与姓之间用.分隔， 如<B> mingjian.liu  </B><br />
+            分公司到上海出差的同事，请使用您在上海的域帐户登陆操作系统(如果没有上海域帐号，请上海IT协助创建)，然后使用您原来的帐号登陆 iManage 系统即可
+      </LI><br /><br />
+
+      <LI>Home: 显示所有与当前用户相关的工时统计任务。.
+      </LI><br /><br />
+
+      <LI>My Query  : 自定义的查询条件工时统计信息，HR/FIN 可查询全部信息，其它人员可查询本人及属下信息。
+      </LI><br /><br />
+
+      <LI>My Project  : 定制查询工时统计时显示的项目列表。对填写工时统计时的项目列表，包含您定制的项目列表及 iTask 系统中您的二级部门下人员参与的全部项目信息
+      </LI><br /><br />
+
+      <LI>My Agant  : 设置填写工时信息的代理人，设置好代理人后工时统计信息可自动分组并显示每个代理人组的填写进度，同时代理人可以在页面中方便发邮件提醒该小组尽快填写工时统计信息。HR/FIN 可设置所有人员作为代理，其它人员只能设置下属为代理人
+      </LI><br /><br />
+
+      <LI>Help  :  使用帮助
+      </LI><br /><br />
+
+
+      <h1>使用方法</h1>
+      
+      <LI>Login  : 使用域账号登陆系统，用户名为小写，名与姓之间用.分隔， 如<B> mingjian.liu  </B><br />
+            分公司到上海出差的同事，请使用您在上海的域帐户登陆操作系统(如果没有上海域帐号，请上海IT协助创建)，然后使用您原来的帐号登陆 iManage 系统即可
+      </LI><br /><br />
+
+      <LI>定制项目列表:<br />
+      	<image src="/chrome/hw/images/iData_Project.bmp" height="450" width="600"/><br />
+      </LI><br /><br />
+      
+      <LI>发起任务:每个月FIN/HR 发起一个新的填写任务！<br />
+      	发起任务前必须先配置好代理人，代理人为二级部门的部门助理或二级部门经理，如果代理人为助理，则助理还需要设置相应子部门的部门经理<br />
+      	<image src="/chrome/hw/images/iData_Agant.bmp" height="390" width="400"/><br />
+      	<image src="/chrome/hw/images/iData_Task.bmp" height="290" width="600"/><br />
+      		输入标题(6),选择一个年月(7.) 提交后即可生成一个新任务<br />
+      		点击图中 1. ：对已提交的Task 进行<br />
+      		点击图中 2. ：结束Task ,关闭后相关人员无法提交数据，保护历史数据免受更改，<br />
+      		点击图中 3. ：发送邮件，提醒相关人员尽快填写工时统计，<br />
+      		点击图中 4. ：加载上月数据，<br />
+      		点击图中 5. ：进入进度显示页面，<br />
+      </LI><br /><br />
+
+      <LI>察看填写进度: 任务显示页面点击任务标题，进入进度显示页面<br />
+      	<image src="/chrome/hw/images/iData_Processing.bmp" height="190" width="600"/><br />
+      		显示每个代理人名下的工时统计填写进度<br />
+      		点击相应进度条，进入填写页面 <br />
+      </LI><br /><br />
+
+      <LI>填写工时统计: 1. 如果该员工使用iTask 系统，则会 从iTask 中自动提取的工时信息；２：手工填写工时百分比信息。如果手工填写，自动获取的信息不再有效，除非删除该项目百分比信息<br />
+      	<image src="/chrome/hw/images/iData_Fill.bmp" height="190" width="600"/><br />
+      		填写某个人在某个项目投入工时百分比，数值为0-100; 某个人的所有项目工时信息总和应为 100<br />
+
+      </LI><br /><br />
+
+      <LI>查询工时统计: <br />
+      	输入查询条件<br />
+      	提交后返回查询结果及按项目和部门维度人力统计图，单位为人/月，同时也会返回相应数据报表<br />
+      	<image src="/chrome/hw/images/iData_Query.bmp" height="190" width="600"/><br />
+      	<image src="/chrome/hw/images/iData_Query_1.bmp" height="190" width="600"/><br />
+      	<image src="/chrome/hw/images/iData_Query_2.bmp" /><br />
+      	<image src="/chrome/hw/images/iData_Query_3.bmp" /><br />
+      	<image src="/chrome/hw/images/iData_Query_4.bmp" /><br />
+      	<image src="/chrome/hw/images/iData_Query_5.bmp" height="450" width="600"/><br />
+
+      </LI><br /><br />
+       
+
+      <LI>Help  :  使用帮助
+      </LI><br /><br />
+      
+    </div>
+ 
+
+ 
+    <br /><br /><br /><br />
+    <div  style="width:20%;margin-left:auto;margin-right:50px;" >
+      iManage创作团队
+      </div>
+-->      
+<br /><br /><br /><br />
+  </body>
+</html>

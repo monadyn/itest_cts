@@ -1,0 +1,93 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:py="http://genshi.edgewall.org/">
+  <xi:include href="layout.html" />
+  <xi:include href="macros.html" />
+  <head>
+    <title>$title</title>    
+  </head>
+
+  
+  <body>
+
+
+   <h2>Manage TestServer</h2> 
+    <form method="post" action="">  
+ 
+    <fieldset id="test">
+    <legend>Test Magangers </legend>
+    
+    <table class="listing" id="tmanager">
+        <thead>
+          <tr>
+          <!--<th class="sel">&nbsp;</th> -->
+          <th>Num</th>
+          <th>Type</th>
+          <th>URL</th>
+          <th>Latest Polling Time</th> 
+          <th>Polling Duration</th>  
+          <th>InProgressTest</th>   
+          <th>TestStatus</th>    
+          </tr>
+        </thead>
+        <tbody>
+        
+        <tr py:for="test_server in test_servers">
+        <!--
+          <td class="sel">
+            <input type="checkbox" name="sel" value="$server.id" />
+          </td>
+          -->
+          <td class="id"><code>$test_server.id</code></td>
+          <td class="type"><a href="$test_server.tmanager_href" target="_blank">$test_server.type</a></td> 
+          <td class="ip"><code>$test_server.ip</code></td>
+          <td class="pollingtime"><code>$test_server.pollingtime</code></td>
+          <td class="pollingduration"><code>$test_server.pollingduration</code></td>
+          <td class="inprogresstest"><a href="$test_server.inprogresstest_href" target="_blank">$test_server.inprogresstest</a></td>
+          <td class="teststatus"><code>$test_server.teststatus</code></td>     
+        </tr>       
+      </tbody>
+    </table>
+	</fieldset>
+
+
+    <fieldset id="add">
+      <legend>New Test Manager Server</legend>
+	         <table width="100%">   
+                 <tr>
+                    $table_NewTestManager
+                 </tr>	  	    
+	         </table>  
+	</fieldset>  
+
+    <fieldset id="add">
+      <legend>Server Monitor</legend>
+	         <table width="100%">   
+                 <tr>
+                    $table_ServerMonitor
+                 </tr>	  	    
+	         </table>  
+	</fieldset>
+
+<!--
+    <fieldset id="add">
+      <legend>RPC Server Monitor</legend>
+	         <table width="100%">   
+                 <tr>
+                    $table_RPCServer
+                 </tr>	  	    
+	         </table>   
+	</fieldset> 
+-->	
+   </form>
+  
+	
+
+ 
+<br /><br />
+    
+   </body>
+</html>

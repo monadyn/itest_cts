@@ -1,0 +1,368 @@
+
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:py="http://genshi.edgewall.org/">
+  <xi:include href="layout.html" />
+  <xi:include href="macros.html" />
+  
+  <head>
+  <title> Test Server </title>
+
+<!--[if lt IE 9]><script language="javascript" type="text/javascript" src="/iTest/chrome/bitten/excanvas.js"></script><![endif]-->
+
+</head>
+
+<body>
+    <h2>$tmanager_type : $starter</h2>
+    
+
+<form id="agent" method="post" action="">
+<!--<div><input type="hidden" name="__FORM_TOKEN" value="76326094bcd67ea2e2384c05" /></div>-->
+
+<p><b>Control Start</b></p>
+    <fieldset id="ControlStart"> 	
+
+  <!-- <table  id="ControlStart" name="ControlStart"   width="700px" class="buglisting" style="word-wrap:break-word;word-break:break-all;"   cellspacing="0" cellpadding="0" border="1">                
+    <tr><td style='background: #f7f7f0;' width='100px'>Server Type</td><td>$tmanager_type</td></tr> 
+    <tr><td style='background: #f7f7f0;' width='100px'>Server IP</td><td>$starter</td></tr> 
+    <tr><td colspan="3">Server Type</td><td><input id="tmanager_type" type="text" name="tmanager_type" size="100" value="$tmanager_type" /></td></tr>     
+    <tr><td colspan="3">Server IP</td><td><input id="starter" type="text" name="starter" size="100" value="$starter" /></td></tr> 
+    </table>
+    
+    <tr><td style='background: #f7f7f0;' width='100px'>Server Status</td><td>$status</td></tr> 
+    <tr><td style='background: #f7f7f0;' width='100px'>Server Discription</td><td>$discription</td></tr>-->
+    
+        <table>   
+          <tr class="field">
+            <th><label for="name">Host Name:</label></th>
+            <td colspan="3"><input id="hostname" type="text" name="hostname" size="50" value="$hostname" /></td>
+            
+          </tr>        
+          <tr class="field">
+            <th><label for="name">Server Type:</label></th>
+            <td colspan="3"><input id="tmanager_type" type="text" name="tmanager_type" size="50" value="$tmanager_type" /></td>             
+          </tr>
+          <tr class="field">
+        	<th><label for="path">Server IP:</label></th>
+        	<td colspan="3"><input id="starter" type="text" name="starter" size="50" value="$starter" /></td>            
+          </tr>          
+<!--          <tr class="field">
+        	<th><label for="path">Server Status:</label></th>
+        	<td colspan="3"><input id="status" type="text" name="status" size="50" value="$status" /></td>            
+          </tr> 
+          
+          <tr class="field">
+        	<th><label for="path">Server Discription:</label></th>
+        	<td colspan="3"><input id="discription" type="text" name="discription" size="50" value="$discription" /></td>            
+          </tr>   
+-->        
+        </table>  
+        
+<!-- <div id="header">-->
+     $status_gif
+  <!--      <img src="$status_gif" alt="iTest" height="25" width="25" />-->
+ <!--  </div>-->
+  
+      <div class="buttons">
+
+      $dym_button
+  <!--      <input type="submit" name="enablestart" value="Enable" />
+        <input type="submit" name="disablestart" value="Disable" />
+        <input type="submit" name="rebootstart" value="Reboot" />-->
+      </div>
+
+
+    </fieldset>    
+
+<p><b>Config Start </b></p>
+	<fieldset id="ConfigStart">   
+	<!-- <legend>Config Start</legend>-->
+        <table>
+        <!--
+          <tr class="field">
+            <th><label for="name">Port:</label></th>
+            <td colspan="3"><input id="port" type="text" name="port" size="50" value="$port" /></td>             
+          </tr>-->
+          <tr class="field">
+        	<th><label for="path">Run uAgent Numbers:</label></th>
+        	<td colspan="3"><input id="agentnum" type="text" name="agentnum" size="50" value="$agentnum" /></td>            
+          </tr>          
+          <!--<tr class="field">
+        	<th><label for="path">Version Path:</label></th>
+        	<td colspan="3"><input id="versionpath" type="text" name="versionpath" size="50" value="$versionpath" /></td>            
+          </tr>   -->
+        
+        </table>	
+      <div class="buttons">
+        <input type="submit" name="configstart" value="Config" />
+      </div>          
+	</fieldset> 
+
+
+<br /><br />
+<!--
+<p><b>Agents Performance</b></p>
+<fieldset id="AgentPerformance"> 
+<div id="chart" style="width:500px; height:300px;"></div>
+</fieldset> 
+<br /><br />-->
+           
+<p><b>Disk Info</b></p>
+<fieldset id="DiskInfo">   
+<table  id="myBaseInfoTable" name="myBaseInfoTable"   width="700px" class="buglisting" style="word-wrap:break-word;word-break:break-all;"   cellspacing="0" cellpadding="0" border="1">                
+    <tr><td style='background: #f7f7f0;' width='100px'>Total Size</td><td>$total MB</td></tr>   
+    <tr><td style='background: #f7f7f0;' width='100px'>Used Size</td><td>$used MB</td></tr>    
+    <tr><td style='background: #f7f7f0;' width='100px'>Free Size</td><td>$free MB</td></tr> 
+    <!--<tr><td style='background: #f7f7f0;' width='100px'>Server Type</td><td>$tmanager_type</td></tr> 
+    <tr><td style='background: #f7f7f0;' width='100px'>Server IP</td><td>$starter</td></tr> -->
+</table>
+<!--  <div id="diskchart" style="height:250px; width:300px;"></div>-->
+      <div class="buttons">
+<label>ID from <input type="text" size="5" name="pre_id" value="$pre_id" /></label>
+<label>to <input type="text" size="5" name="next_id" value="$next_id" /></label>      
+        <input type="submit" name="removetestversion" value="Remove" />
+      </div> 
+</fieldset>      
+  
+
+ <!-- 
+ <div id="header">
+   <img src="/iTest/chrome/bitten/blue.gif" alt="iTest" height="38" width="38" />
+     <img src="/iTest/chrome/bitten/red.gif" alt="iTest" height="38" width="38" />
+     <p>Status: <img src="/iTest/chrome/bitten/yellow.gif" alt="iTest" height="30" width="30" /></p>
+     
+  </div>-->
+
+   <!-- 
+<div id="chart4" style="margin-top:20px; margin-left:20px; width:300px; height:300px;"></div>
+  <script class="code" type="text/javascript">$(document).ready(function(){
+        plot4 = $.jqplot('chart4', [[[2,1], [6,2], [7,3], [10,4]], [[7,1], [5,2],[3,3],[2,4]], [[14,1], [9,2], [9,3], [8,4]]], {
+            stackSeries: true,
+            captureRightClick: true,
+            seriesDefaults:{
+                renderer:$.jqplot.BarRenderer,
+                shadowAngle: 135,
+                rendererOptions: {
+                    barDirection: 'horizontal',
+                    highlightMouseDown: true    
+                },
+                pointLabels: {show: true, formatString: '%d'}
+            },
+            legend: {
+                show: true,
+                location: 'e',
+                placement: 'outside'
+            },
+            axes: {
+                yaxis: {
+                    renderer: $.jqplot.CategoryAxisRenderer
+                }
+            }
+        });
+    });</script>
+-->
+
+<br /><br /><br /><br />
+
+</form>
+
+
+<script class="code" type="text/javascript"> 
+$(document).ready(function(){
+  var data = [
+    ['Free Size:'+$free+'MB', $free], ['Used Size:'+$used+'MB', $used] 
+  ];
+  var plot1 = jQuery.jqplot ('diskchart', [data], 
+    { 
+      seriesDefaults: {
+        // Make this a pie chart.
+        renderer: jQuery.jqplot.PieRenderer, 
+        rendererOptions: {
+          // Put data labels on the pie slices.
+          // By default, labels show the percentage of the slice.
+          showDataLabels: true,
+          dataLabelThreshold : 0.001,
+          dataLabelFormatString: '%.2f'+'%'
+        }
+      }, 
+      legend: { show:true, location: 'e' }
+    }
+  );
+});
+</script>
+
+ <!-- bar -->
+
+ 
+ <!-- 
+      
+    
+ <script class="code" type="text/javascript"> 
+$(document).ready(function(){
+    // For horizontal bar charts, x an y values must will be "flipped"
+    // from their vertical bar counterpart.
+
+  var data = [
+    [1,100], [2,40], [3,10], ['server4',50], ['server5',20]
+  ];    
+    var plot2 = $.jqplot(
+        'chart', [data],
+        /*
+        [
+        [['server1',100], ['server2',40], ['server3',10], ['server4',50], ['server5',20]]  
+        [[1,100], [2,40], [3,10], [4,50], [5,20]]  
+        
+        ], */
+        
+        {
+          title: ''/*$hostname*/,
+
+          seriesDefaults: 
+          {
+            renderer:$.jqplot.BarRenderer,
+
+            
+            // Show point labels to the right ('e'ast) of each bar.
+            // edgeTolerance of -15 allows labels flow outside the grid
+            // up to 15 pixels.  If they flow out more than that, they 
+            // will be hidden.
+                        
+            //pointLabels: 
+            //{ 
+            //	show: true, 
+            //	location: 'sw', 
+            //	edgeTolerance: -10 
+           // },
+           
+            color:'#5FAB78',
+            
+            // Rotate the bar shadow as if bar is lit from top right.
+            shadowAngle: 100,
+            // Here's where we tell the chart it is oriented horizontally.
+            
+            //horizontal
+            rendererOptions: 
+            //{
+            //    barDirection: 'vertical',
+            //    barWidth: 20
+            //}
+            {
+		        barPadding: 80,      // number of pixels between adjacent bars in the same
+		                            // group (same category or bin).
+		        barMargin: 100,      // number of pixels between adjacent groups of bars.
+		        barDirection: 'vertical', // vertical or horizontal.
+		        barWidth: 20,//null,     // width of the bars.  null to calculate automatically.
+		        shadowOffset: 2,    // offset from the bar edge to stroke the shadow.
+		        shadowDepth: 5,     // nuber of strokes to make for the shadow.
+		        shadowAlpha: 0.8   // transparency of the shadow.
+            }
+
+
+            
+          },
+			    axes: {
+				    yaxis: {
+				        label: 'Performance',
+			            renderer: $.jqplot.CategoryAxisRenderer
+			            
+			        }
+			    }
+		}
+        
+        );
+});
+</script>
+  --> 
+
+<!-- <div class="example-plot" id="chart"></div>-->
+
+<!--
+<style type="text/css">
+      .jqplot-point-label {white-space: nowrap;}
+/*    .jqplot-yaxis-label {font-size: 14pt;}*/
+/*    .jqplot-yaxis-tick {font-size: 7pt;}*/
+ 
+    div.jqplot-target {
+        height: 400px;
+        width: 800px;
+        margin: 70px;
+    }
+</style>
+-->
+
+<script class="code" type="text/javascript">
+
+$(document).ready(function(){   
+
+    
+    var data = $agents_performance_data; 
+
+    var plot3 = $.jqplot('chart', [data], {
+      title:'Agent Performance',
+      series:[{
+      	renderer:$.jqplot.BarRenderer,
+      	color:'#5FAB78',
+           //horizontal
+            rendererOptions: 
+            {
+                barDirection: 'vertical',
+                barWidth: 20
+            } 
+      	}],
+          
+      axes: {
+        xaxis: {
+          renderer: $.jqplot.CategoryAxisRenderer,
+          label: 'Agents Port',
+          labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+          tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+          tickOptions: {
+              angle: -30,
+              fontFamily: 'Courier New',
+              fontSize: '9pt'
+          }
+          
+        },
+        yaxis: 
+        /*{
+          label: 'Run Count',
+          labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+          min: 0,
+          max: 10
+        }*/
+		{
+			label: 'Accumulative Count',
+			/*labelRenderer: $.jqplot.CanvasAxisLabelRenderer,*/
+			tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+		    tickOptions: {
+		        mark: 'outside',    // Where to put the tick mark on the axis
+		                            // 'outside', 'inside' or 'cross',
+		        showMark: true,
+		        showGridline: true, // wether to draw a gridline (across the whole grid) at this tick,
+		        markSize: 4,        // length the tick will extend beyond the grid in pixels.  For
+		                            // 'cross', length will be added above and below the grid boundary,
+		        show: true,         // wether to show the tick (mark and label),
+		        showLabel: true,    // wether to show the text label at the tick,
+		        formatString: '%1d'   // format string to use with the axis tick formatter
+		    },
+
+			min: 0,
+			showTicks: true,        // wether or not to show the tick labels,
+			showTickMarks: true    // wether or not to show the tick marks
+        }
+
+        
+      }
+    });
+    
+    
+});
+</script>
+    <!---->
+
+</body>
+
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:py="http://genshi.edgewall.org/">
+  <xi:include href="layout.html" />
+  <xi:include href="macros.html" />
+  <head>
+    <title>$title</title>
+    <!--<meta http-equiv="refresh" content="40"></meta>-->
+        <script>
+  $(document).ready(function() {
+        $line;
+  });
+    </script>
+   
+  </head>
+  
+  <body>
+   
+     <div id="mainframe" name="mainframe"  ></div>   
+
+        <tr py:for="start in starts">     
+                    
+<script type="text/javascript">
+$(function () {
+    $(document).ready(function() {
+        Highcharts.setOptions({
+            global: {
+                useUTC: false
+            }
+        });
+
+		/**
+		 * Request data from the server, add it to the graph and set a timeout to request again
+		 */
+		function requestData() {
+			$.ajax({
+			    //type: "GET",
+			    //url: "user.json",
+			    //url:"/iTest/chrome/bitten/ajax_server.php",
+				//url: "http://itest-center/iTest/build?debug_start_statics=all",
+				url: "$start.starter_data_url",
+
+                beforeSend: function(XMLHttpRequest) { /*alert('beforeSend');*/ },
+				success: function(data, textStatus) {
+				    
+				    //alert(data); 
+				    
+					var series = chart.series[0];
+					//shift = series.data.length>20;  /*shift if the series is longer than 20	*/
+   				    //chart.series[0].addPoint(eval(point), true, shift);
+
+					//$.each(data, function(i,item){
+                    //    var x = (new Date()).getTime(),
+                    //    y = $start.y_data; 
+                    //      y = item.y_data;                        
+                    //})
+                    
+                    //var x = (new Date()).getTime(),
+                    //var x 
+                        //y = data;//y = 4;
+                        //y = Math.random()*$start.y_data;
+                        //y = $start.y_data;
+                    //alert(x);
+                        
+                    //series.addPoint([x, y], true, true);
+                    //series.addPoint(data, true, shift);
+                    series.addPoint(eval(data), true, true);
+                    
+                    //chart.series[0].addPoint(eval(point), true, true);
+                    //chart.redraw;
+					
+					// call it again after 5 second
+					setTimeout(requestData, 5000);	//5s
+				},
+				cache: false
+			});
+		}
+    
+        var chart;
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: '$start.hostname',
+                type: 'spline',
+                marginRight: 10,
+                height: 200,
+                width: 100,
+				events: {
+					load: requestData
+				} 
+            },
+            title: {
+                text: null
+            },
+            xAxis: {
+                type: 'datetime',
+                tickPixelInterval: 150
+            },
+            yAxis: {
+                title: {
+                    text: null/*'Value'*/
+                },
+                max: $y_max, /*$start.y_max,*/
+                min: 0,
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                formatter: function() {
+                        /*return '<b>'+ this.series.name +'</b><br/>'+
+                        Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) +'<br/>'+
+                        Highcharts.numberFormat(this.y, 1);*/
+                        
+                        return '<b>'+ this.series.name +'</b>: <br/>'+
+                        Highcharts.numberFormat(this.y, 1);
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            },
+            series: [{/*410|461|461|461|461|461|461|461|461|461*/
+                name: 'BusyAgents',
+                data: [],
+                data: (function() {                    
+                    var data = [],
+                        //time = (new Date()).getTime(),
+                        i;
+                    data.push({
+                            //x: Math.random()*$start.y_max,
+                            x: 0,
+                            y: $start.y_data
+                       });  
+                    data.push({
+                            x: 1,
+                            y: $start.y_data
+                       }); 
+                    data.push({
+                            x: 2,
+                            y: $start.y_data
+                       }); 
+                    data.push({
+                            x: 3,
+                            y: $start.y_data
+                       });    
+                    data.push({
+                            x: 4,
+                            y: $start.y_data
+                       });                          
+                       
+                    //for (i = -9; ; i++) {
+                        //data.push({
+                            //x: time + i * 1000,
+                            //x: i+9,
+                            //y: Math.random()*$start.y_data
+                            //y: $start.y_data
+                            //y: $start.y_max
+                        //});
+                        //i++;
+                        //if(i==0)
+                        //{
+                        //    break;
+                        //}
+                    //}
+                    
+                    return data;
+                })()
+            }]
+        });
+    });
+    
+});
+</script> 	     		    
+        </tr>
+<script type="text/javascript">
+
+$(document).ready(
+	function(){ 
+		$("body").append('<input type="button" value="plz" id="btn" />'); 
+		$('#btn').click(function (){ getServerData();  alert('click...'); });
+		$("body").append('<div id="result"></div>'); 
+	}
+);
+
+function getServerData(){
+	$.ajax({
+		//url:"/trac/Projects/iTest/test.txt",
+		///trac/Projects/iTest/attachments/iTest/test.txt
+		//url:"/iTest/chrome/bitten/ajax_server.php",
+		//url:"/iTest/chrome/bitten/test.txt",
+		//url:"/trac/Projects/iTest/attachments/iTest/test.txt",
+		url: "http://itest-center/iTest/build?debug_start_statics=all",
+		timeout:1000,
+		type:"POST",
+		error:function (XMLHttpRequest, textStatus, errorThrown) {		
+			alert('errorThrown:'+errorThrown);
+			alert('status:'+XMLHttpRequest.status);
+			alert('status:'+XMLHttpRequest.readyState);
+			alert('textStatus:'+textStatus);
+		},
+		beforeSend:function (XMLHttpRequest) {/*alert('before req...');*/},
+		success: function (data, textStatus) {alert('data:'+data); alert('data:'+textStatus);},  
+		complete:handleResponse
+	}); 
+}
+
+function handleResponse(XMLHttpRequest, textStatus) {
+	alert('done...'+XMLHttpRequest);
+
+	//alert('done2...');
+
+	var myjson = eval(XMLHttpRequest.responseText); 
+        
+    //alert('done3...');
+	var str="";
+
+
+	//alert('done4...');
+    //alert(str);
+
+	$("#result").html(str);
+	$("#result").append('<input type="button" value="clr" id="btn2" />'); 
+	$('#btn2').click(function (){ $("#result").html(''); });
+}
+</script>
+
+   <h2>Test Manager Server</h2> 
+    <form method="post" action="">
+  
+<fieldset id="Server Performance">  
+<legend>Server Performance</legend>
+
+	<table class="form" summary="">    
+          <tr class="field">
+            <th><label for="AgentNum">Total Agents:</label></th>
+            <td colspan="3"><dd class="test">$all_total_agents</dd></td>  
+          </tr> 
+          <tr class="field">
+            <th><label for="AgentNum">Busy Agents:</label></th>
+            <td colspan="3"><dd class="test">$all_running_agents</dd></td>  
+          </tr> 
+          <tr class="field">
+            <th><label for="AgentNum">Idle Agents:</label></th>
+            <td colspan="3"><dd class="test">$all_idle_agents</dd></td>  
+          </tr>           
+	</table>   			
+	
+<table width="750" border="0" align="center" cellpadding="0" cellspacing="0" style="BORDER:1px #333333 solid;">
+   $start_performance      
+</table>
+</fieldset> 
+ 
+	
+   </form>
+  
+	
+
+ 
+<br /><br />
+
+
+    
+   </body>
+</html>

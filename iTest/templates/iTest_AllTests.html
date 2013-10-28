@@ -1,0 +1,114 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:py="http://genshi.edgewall.org/">
+  <xi:include href="layout.html" />
+  <xi:include href="macros.html" />
+  <head>
+    <title>$title</title>
+        <script>
+  $(document).ready(function() {
+  $('#large2').dataTable({ "aaSorting": [[ 0, "desc" ]],"sPaginationType": "full_numbers","bJQueryUI": false});
+  });
+    </script>    
+  </head>
+  <body>
+      <h2>
+     $nav
+    </h2>
+    
+    <py:choose>
+    <py:otherwise>
+    <form method="post" action="">
+
+      <div class="buttons">
+        <input type="submit" name="remove_tests" value="Remove selected items" />
+      </div>  
+      
+      <div class="buttons">
+        <input type="submit" name="update_tests" value="Update" /> 
+		<label>ID from <input type="text" size="5" name="pre_id" value="$pre_id" /></label>
+		<label>to <input type="text" size="5" name="next_id" value="$next_id" /></label>   
+		<label>Max items per page<input type="text" size="5" name="step_build" value="$step_build" /></label> 
+		<label>Type <input type="text" size="5" name="testtype" value="$testtype" /></label>  
+		<input type="submit" name="pre_tests" value="Previous" />
+		<input type="submit" name="next_tests" value="Next" />
+      </div> 
+
+
+
+<table id="large2" name="large2" class="listing">
+        <thead>
+          <tr>
+          <th class="sel">&nbsp;</th>  
+          <th>ID</th>
+          <th>Ower</th>
+          <th>Creator</th>
+          <th>Type</th>   
+          <th>CaseType</th> 
+          <th>Status</th> 
+          <th>Priority</th>
+          <th>PassRatio</th>
+          <th>UnFinishedRatio</th>
+
+          <th>WaitDuration</th>          
+          <th>TestDuration</th>
+
+          <th>Wait</th>          
+          <th>Start </th>    
+          <th>Stop </th>
+          
+          <th>Verify</th>
+          <th>AutoDel</th>
+          <th>Version</th> 
+          <th>Status</th>  
+
+          
+          </tr>
+        </thead>
+
+        <tbody>
+        <tr py:if="not tests">
+          <td colspan="4"><em>(No Test Request)</em></td>
+        </tr>
+        <tr py:for="test in tests">
+          <td class="sel">
+            <input type="checkbox" name="sel" value="$test.id" />
+          </td>
+          <td><code>$test.id</code></td>
+          <td><code>$test.creator</code></td>
+          <td><a href="$test.testhref" target="_blank">$test.name</a></td>
+          <td><code>$test.buildtype</code></td> 
+          <td><code>$test.subtype</code></td>
+          <td><img src="$test.status_gif" alt="$test.status" height="30" width="30" /></td>
+          <td><code>$test.priority</code></td> 
+          <td><a href="$test.result_href" target="_blank">$test.testreport</a></td>
+          
+          <td><code>$test.UnFinishedRatio</code></td> 
+          <td><code>$test.waiting_duration</code></td>           
+          <td><code>$test.timecost</code></td>    
+
+          <td><code>$test.waiting_time</code></td>           
+          <td><code>$test.start</code></td> 
+          <td><code>$test.end</code></td>            
+          
+          <td><code>$test.verify</code></td>
+          <td><code>$test.versiondel_type</code></td>
+          <td><code>$test.version</code></td>
+          <td><a href="$test.result_href" target="_blank">$test.status</a></td>  
+
+          
+        </tr>
+      </tbody>
+      
+    </table>
+   
+    </form>
+    
+    </py:otherwise>
+    </py:choose>    
+    
+   </body>
+</html>
