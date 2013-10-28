@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: Bitten
+Version: 0.6b2
+Summary: Continuous integration for Trac
+Home-page: http://bitten.edgewall.org/
+Author: Edgewall Software
+Author-email: info@edgewall.org
+License: BSD
+Download-URL: http://bitten.edgewall.org/wiki/Download
+Description: A slave for running builds and submitting them to Bitten, the continuous integration system for Trac
+Platform: UNKNOWN

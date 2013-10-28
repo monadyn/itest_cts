@@ -1,0 +1,15 @@
+firtst git clone https://github.com/monadyn/itest_cts
+
+cd itest_cts
+touch README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/monadyn/itest_cts.git  # not need
+git push origin master
+
+Push an existing repository from the command line
+
+git remote add origin https://github.com/monadyn/logquery.git
+git push -u origin master
+

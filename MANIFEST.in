@@ -1,0 +1,14 @@
+include ChangeLog
+include COPYING
+include README.txt
+include iTest/htdocs/*.*
+include iTest/htdocs/charts_library/*.swf
+include iTest/templates/*.*
+include doc/*.*
+include doc/api/*.*
+include doc/common/*.html
+include doc/common/*.py
+include doc/common/*.txt
+include doc/common/COPYING
+include doc/common/conf/*.ini
+include doc/common/style/*.*
